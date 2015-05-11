@@ -15,5 +15,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:yuku-t/irohajs.git"
+  },
+  "devDependencies": {
+    "pegjs": "0.8.0"
   }
 }
