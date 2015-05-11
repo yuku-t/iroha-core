@@ -1,0 +1,19 @@
+{
+  "name": "irohajs",
+  "version": "0.0.0",
+  "description": "Yet another ABC notation parser",
+  "keywords": [
+    "abc-notation"
+  ],
+  "homepage": "https://github.com/yuku-t/irohajs",
+  "url": "https://github.com/yuku-t/irohajs/issues",
+  "license": "MIT",
+  "author": {
+    "name": "Yuku Takahashi",
+    "email": "taka84u9@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:yuku-t/irohajs.git"
+  }
+}
