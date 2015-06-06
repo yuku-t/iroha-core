@@ -1,0 +1,74 @@
+Start
+  = AbcFile
+
+AbcFile
+  = AbcTune
+
+AbcTune
+  = TuneHeader TuneBody
+
+TuneHeader
+  = ReferenceNumberField TitleField InformationField*
+
+InformationField
+  = ComposerField
+  / KeyField
+  / MeterField
+
+ComposerField
+  = "C:" TextString Linefeed
+
+KeyField
+  = "K:" TextString Linefeed
+
+MeterField
+  = "M:" TextString Linefeed
+
+TitleField
+  = "T:" TextString Linefeed
+
+ReferenceNumberField
+  = "X:" Number Linefeed
+
+TuneBody
+  = TuneLine+
+
+TuneLine
+  = Element+ Linefeed?
+
+Element
+  = NotesGroup
+  / BarLine
+  / Space
+
+NotesGroup
+  = NoteElement+
+
+NoteElement
+  = Note NoteLength?
+
+Note
+  = [a-gA-G]
+
+NoteLength
+  = Number? ("/"+ Number?)?
+
+BarLine
+  = "|:"
+  / ":|"
+  / "|"
+
+Linefeed
+  = "\r\n" / "\n"
+
+Space
+  = [ \t]
+
+TextString
+  = TextChar*
+
+TextChar
+  = [^\n]
+
+Number
+  = [0-9]+
