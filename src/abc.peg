@@ -1,8 +1,12 @@
+{
+  var AbcFile = require("./AbcFile").AbcFile;
+}
+
 Start
   = AbcFile
 
 AbcFile
-  = AbcTune
+  = AbcTune { return new AbcFile(); }
 
 AbcTune
   = TuneHeader TuneBody
