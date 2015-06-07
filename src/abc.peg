@@ -1,15 +1,16 @@
 {
-  var AbcFile = require("./AbcFile").AbcFile;
+  var AbcFile = require("./AbcFile").AbcFile
+    , AbcTune = require("./AbcTune").AbcTune;
 }
 
 Start
   = AbcFile
 
 AbcFile
-  = AbcTune { return new AbcFile(); }
+  = abcTune:AbcTune { return new AbcFile(abcTune); }
 
 AbcTune
-  = TuneHeader TuneBody
+  = TuneHeader TuneBody { return new AbcTune(); }
 
 TuneHeader
   = ReferenceNumberField TitleField InformationField*

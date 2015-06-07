@@ -1,5 +1,6 @@
 var AbcFile = (function () {
-    function AbcFile() {
+    function AbcFile(abcTune) {
+        this.abcTune = abcTune;
     }
     return AbcFile;
 })();
