@@ -23,6 +23,7 @@ describe "Parser", ->
         abcTune = abcFile.abcTune
         assert.equal(abcTune.getReferenceNumber(), 1)
         assert.equal(abcTune.getTitle(), "Speed the Plough")
+        assert.equal(abcTune.getKey(), "G")
 
     context "when an invalid abc notation is given", ->
       it "throws Parser.SyntaxError", ->

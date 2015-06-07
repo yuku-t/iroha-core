@@ -20,13 +20,12 @@ AbcTune
   = tuneHeader:TuneHeader tuneBody:TuneBody { return new AbcTune(tuneHeader, tuneBody); }
 
 TuneHeader
-  = xf:ReferenceNumberField tf:TitleField ifs:InformationField* {
-    return new TuneHeader(xf, tf, ifs);
+  = xf:ReferenceNumberField tf:TitleField ifs:InformationField* kf:KeyField {
+    return new TuneHeader(xf, tf, kf, ifs);
   }
 
 InformationField
   = ComposerField
-  / KeyField
   / MeterField
 
 ComposerField

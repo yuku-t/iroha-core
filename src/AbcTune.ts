@@ -17,4 +17,8 @@ export class AbcTune {
     getTitle(): String {
         return this.tuneHeader.getTitle();
     }
+
+    getKey(): String {
+        return this.tuneHeader.getKey();
+    }
 }

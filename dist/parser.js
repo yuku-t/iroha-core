@@ -36,8 +36,8 @@ module.exports = (function() {
         peg$c1 = peg$FAILED,
         peg$c2 = function(tuneHeader, tuneBody) { return new AbcTune(tuneHeader, tuneBody); },
         peg$c3 = [],
-        peg$c4 = function(xf, tf, ifs) {
-            return new TuneHeader(xf, tf, ifs);
+        peg$c4 = function(xf, tf, ifs, kf) {
+            return new TuneHeader(xf, tf, kf, ifs);
           },
         peg$c5 = "C:",
         peg$c6 = { type: "literal", value: "C:", description: "\"C:\"" },
@@ -305,9 +305,15 @@ module.exports = (function() {
             s4 = peg$parseInformationField();
           }
           if (s3 !== peg$FAILED) {
-            peg$reportedPos = s0;
-            s1 = peg$c4(s1, s2, s3);
-            s0 = s1;
+            s4 = peg$parseKeyField();
+            if (s4 !== peg$FAILED) {
+              peg$reportedPos = s0;
+              s1 = peg$c4(s1, s2, s3, s4);
+              s0 = s1;
+            } else {
+              peg$currPos = s0;
+              s0 = peg$c1;
+            }
           } else {
             peg$currPos = s0;
             s0 = peg$c1;
@@ -329,10 +335,7 @@ module.exports = (function() {
 
       s0 = peg$parseComposerField();
       if (s0 === peg$FAILED) {
-        s0 = peg$parseKeyField();
-        if (s0 === peg$FAILED) {
-          s0 = peg$parseMeterField();
-        }
+        s0 = peg$parseMeterField();
       }
 
       return s0;

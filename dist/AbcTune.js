@@ -9,6 +9,9 @@ var AbcTune = (function () {
     AbcTune.prototype.getTitle = function () {
         return this.tuneHeader.getTitle();
     };
+    AbcTune.prototype.getKey = function () {
+        return this.tuneHeader.getKey();
+    };
     return AbcTune;
 })();
 exports.AbcTune = AbcTune;
