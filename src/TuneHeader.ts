@@ -2,19 +2,34 @@ import composer = require("./ComposerField");
 import field = require("./InformationField");
 import key = require("./KeyField");
 import reference = require("./ReferenceNumberField");
+import meter = require("./MeterField");
 import title = require("./TitleField");
 
 export class TuneHeader {
     referenceNumberField: reference.ReferenceNumberField;
     titleField: title.TitleField;
     keyField: key.KeyField;
-    informationFields: Array<field.InformationField>;
+    meterField: meter.MeterField;
+    composerFields: composer.ComposerField[];
 
-    constructor (xf: reference.ReferenceNumberField, tf: title.TitleField, kf: key.KeyField, ifs: Array<field.InformationField>) {
+    constructor (xf: reference.ReferenceNumberField, tf: title.TitleField, kf: key.KeyField, ifs: field.InformationField[]) {
         this.keyField = kf;
-        this.informationFields = ifs;
         this.referenceNumberField = xf;
         this.titleField = tf;
+        this.composerFields = [];
+
+        ifs.forEach((informationField: field.InformationField) => {
+            if (informationField instanceof composer.ComposerField) {
+                this.composerFields.push(informationField);
+            } else if (informationField instanceof meter.MeterField) {
+                this.meterField = informationField;
+            }
+        });
+
+        if (this.meterField == null) {
+            // when there is no M: field defined, free meter is assumed.
+            this.meterField = new meter.MeterField("none");
+        }
     }
 
     getReferenceNumber(): number {
@@ -29,13 +44,9 @@ export class TuneHeader {
         return this.keyField.value;
     }
 
-    getComposers(): Array<string> {
-        var result: Array<string> = [];
-        this.informationFields.forEach(informationField => {
-            if (informationField instanceof composer.ComposerField) {
-                result.push(informationField.value);
-            }
+    getComposers(): string[] {
+        return this.composerFields.map((composerField: composer.ComposerField) => {
+            return composerField.value;
         });
-        return result;
     }
 }

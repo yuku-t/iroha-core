@@ -22,7 +22,7 @@ export class AbcTune {
         return this.tuneHeader.getKey();
     }
 
-    getComposers(): Array<string> {
+    getComposers(): string[] {
         return this.tuneHeader.getComposers();
     }
 }
