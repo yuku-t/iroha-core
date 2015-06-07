@@ -86,7 +86,7 @@ module.exports =
         "parameter"
         "property-declaration"
         "variable-declaration"
-        "member-variable-declaration"
+        # "member-variable-declaration"
       ]
       "typedef-whitespace": [
         true

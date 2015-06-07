@@ -1,8 +1,13 @@
 {
-  var AbcFile = require("./AbcFile").AbcFile
-    , AbcTune = require("./AbcTune").AbcTune
-    , TuneHeader = require("./TuneHeader").TuneHeader
-    , TuneBody = require("./TuneBody").TuneBody;
+  var AbcFile              = require("./AbcFile").AbcFile
+    , AbcTune              = require("./AbcTune").AbcTune
+    , ComposerField        = require("./ComposerField").ComposerField
+    , KeyField             = require("./KeyField").KeyField
+    , MeterField           = require("./MeterField").MeterField
+    , ReferenceNumberField = require("./ReferenceNumberField").ReferenceNumberField
+    , TitleField           = require("./TitleField").TitleField
+    , TuneBody             = require("./TuneBody").TuneBody
+    , TuneHeader           = require("./TuneHeader").TuneHeader
 }
 
 Start
@@ -15,7 +20,9 @@ AbcTune
   = tuneHeader:TuneHeader tuneBody:TuneBody { return new AbcTune(tuneHeader, tuneBody); }
 
 TuneHeader
-  = ReferenceNumberField TitleField InformationField* { return new TuneHeader(); }
+  = xf:ReferenceNumberField tf:TitleField ifs:InformationField* {
+    return new TuneHeader(xf, tf, ifs);
+  }
 
 InformationField
   = ComposerField
@@ -23,19 +30,19 @@ InformationField
   / MeterField
 
 ComposerField
-  = "C:" TextString Linefeed
+  = "C:" text:TextString Linefeed { return new ComposerField(text); }
 
 KeyField
-  = "K:" TextString Linefeed
+  = "K:" text:TextString Linefeed { return new KeyField(text); }
 
 MeterField
-  = "M:" TextString Linefeed
+  = "M:" text:TextString Linefeed { return new MeterField(text); }
 
 TitleField
-  = "T:" TextString Linefeed
+  = "T:" text:TextString Linefeed { return new TitleField(text); }
 
 ReferenceNumberField
-  = "X:" Number Linefeed
+  = "X:" number:Number Linefeed { return new ReferenceNumberField(number); }
 
 TuneBody
   = TuneLine+ { return new TuneBody(); }
@@ -72,10 +79,10 @@ Space
   = [ \t]
 
 TextString
-  = TextChar*
+  = cs:TextChar* { return cs.join(""); }
 
 TextChar
   = [^\n]
 
 Number
-  = [0-9]+
+  = d:$[0-9]+ { return parseInt(d, 10); }
