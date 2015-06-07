@@ -1,5 +1,6 @@
-import header = require("./TuneHeader");
 import body = require("./TuneBody");
+import header = require("./TuneHeader");
+import key = require("./Key");
 
 export class AbcTune {
     tuneHeader: header.TuneHeader;
@@ -18,7 +19,7 @@ export class AbcTune {
         return this.tuneHeader.getTitle();
     }
 
-    getKey(): string {
+    getKey(): key.Key {
         return this.tuneHeader.getKey();
     }
 

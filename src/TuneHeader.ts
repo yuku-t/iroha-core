@@ -1,6 +1,7 @@
 import composer = require("./ComposerField");
 import field = require("./InformationField");
-import key = require("./KeyField");
+import keyField = require("./KeyField");
+import key = require("./Key");
 import reference = require("./ReferenceNumberField");
 import meter = require("./MeterField");
 import title = require("./TitleField");
@@ -8,11 +9,11 @@ import title = require("./TitleField");
 export class TuneHeader {
     referenceNumberField: reference.ReferenceNumberField;
     titleField: title.TitleField;
-    keyField: key.KeyField;
+    keyField: keyField.KeyField;
     meterField: meter.MeterField;
     composerFields: composer.ComposerField[];
 
-    constructor (xf: reference.ReferenceNumberField, tf: title.TitleField, kf: key.KeyField, ifs: field.InformationField[]) {
+    constructor (xf: reference.ReferenceNumberField, tf: title.TitleField, kf: keyField.KeyField, ifs: field.InformationField[]) {
         this.keyField = kf;
         this.referenceNumberField = xf;
         this.titleField = tf;
@@ -40,7 +41,7 @@ export class TuneHeader {
         return this.titleField.value;
     }
 
-    getKey(): string {
+    getKey(): key.Key {
         return this.keyField.value;
     }
 

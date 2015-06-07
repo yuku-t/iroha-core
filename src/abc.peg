@@ -32,7 +32,7 @@ ComposerField
   = "C:" text:TextString Linefeed { return new ComposerField(text); }
 
 KeyField
-  = "K:" text:TextString Linefeed { return new KeyField(text); }
+  = "K:" key:Key Linefeed { return new KeyField(key); }
 
 MeterField
   = "M:" text:TextString Linefeed { return new MeterField(text); }
@@ -42,6 +42,29 @@ TitleField
 
 ReferenceNumberField
   = "X:" number:Number Linefeed { return new ReferenceNumberField(number); }
+
+Key
+  = KeyNote KeyAccidental? ModeSpec?
+
+KeyNote
+  = [A-G]
+
+KeyAccidental
+  = "#"
+  / "b"
+
+ModeSpec
+  = Space* mode:Mode { return mode; }
+
+Mode
+  = ModeMajor { return "major"; }
+  / ModeMinor { return "minor"; }
+
+ModeMajor
+  = [m]i [a]i [j]i ([o]i [r]i)?
+
+ModeMinor
+  = [m]i ([i]i [n]i [o]i [r]i)?
 
 TuneBody
   = TuneLine+ { return new TuneBody(); }
