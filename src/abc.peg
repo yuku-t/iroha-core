@@ -1,6 +1,8 @@
 {
   var AbcFile = require("./AbcFile").AbcFile
-    , AbcTune = require("./AbcTune").AbcTune;
+    , AbcTune = require("./AbcTune").AbcTune
+    , TuneHeader = require("./TuneHeader").TuneHeader
+    , TuneBody = require("./TuneBody").TuneBody;
 }
 
 Start
@@ -10,10 +12,10 @@ AbcFile
   = abcTune:AbcTune { return new AbcFile(abcTune); }
 
 AbcTune
-  = TuneHeader TuneBody { return new AbcTune(); }
+  = tuneHeader:TuneHeader tuneBody:TuneBody { return new AbcTune(tuneHeader, tuneBody); }
 
 TuneHeader
-  = ReferenceNumberField TitleField InformationField*
+  = ReferenceNumberField TitleField InformationField* { return new TuneHeader(); }
 
 InformationField
   = ComposerField
@@ -36,7 +38,7 @@ ReferenceNumberField
   = "X:" Number Linefeed
 
 TuneBody
-  = TuneLine+
+  = TuneLine+ { return new TuneBody(); }
 
 TuneLine
   = Element+ Linefeed?

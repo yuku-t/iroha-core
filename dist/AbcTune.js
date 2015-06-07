@@ -1,5 +1,7 @@
 var AbcTune = (function () {
-    function AbcTune() {
+    function AbcTune(tuneHeader, tuneBody) {
+        this.tuneHeader = tuneHeader;
+        this.tuneBody = tuneBody;
     }
     return AbcTune;
 })();
