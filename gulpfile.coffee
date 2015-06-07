@@ -36,6 +36,6 @@ gulp.task "test", ->
 
 gulp.task "tslint", ->
   gulp
-    .src("src/**/*.ts")
+    .src("src/*.ts")
     .pipe(tslint(require("./tslint.config")))
     .pipe(tslint.report("prose"))
