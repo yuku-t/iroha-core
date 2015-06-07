@@ -29,6 +29,9 @@ var TuneHeader = (function () {
     TuneHeader.prototype.getKey = function () {
         return this.keyField.value;
     };
+    TuneHeader.prototype.getMeter = function () {
+        return this.meterField.value;
+    };
     TuneHeader.prototype.getComposers = function () {
         return this.composerFields.map(function (composerField) {
             return composerField.value;

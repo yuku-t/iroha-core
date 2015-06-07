@@ -44,6 +44,10 @@ export class TuneHeader {
         return this.keyField.value;
     }
 
+    getMeter(): string {
+        return this.meterField.value;
+    }
+
     getComposers(): string[] {
         return this.composerFields.map((composerField: composer.ComposerField) => {
             return composerField.value;

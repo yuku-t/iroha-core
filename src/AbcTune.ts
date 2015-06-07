@@ -22,6 +22,10 @@ export class AbcTune {
         return this.tuneHeader.getKey();
     }
 
+    getMeter(): string {
+        return this.tuneHeader.getMeter();
+    }
+
     getComposers(): string[] {
         return this.tuneHeader.getComposers();
     }
