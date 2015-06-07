@@ -1,3 +1,4 @@
+var composer = require("./ComposerField");
 var TuneHeader = (function () {
     function TuneHeader(xf, tf, kf, ifs) {
         this.keyField = kf;
@@ -13,6 +14,15 @@ var TuneHeader = (function () {
     };
     TuneHeader.prototype.getKey = function () {
         return this.keyField.value;
+    };
+    TuneHeader.prototype.getComposers = function () {
+        var result = [];
+        this.informationFields.forEach(function (informationField) {
+            if (informationField instanceof composer.ComposerField) {
+                result.push(informationField.value);
+            }
+        });
+        return result;
     };
     return TuneHeader;
 })();

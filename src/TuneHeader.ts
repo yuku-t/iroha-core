@@ -1,3 +1,4 @@
+import composer = require("./ComposerField");
 import field = require("./InformationField");
 import key = require("./KeyField");
 import reference = require("./ReferenceNumberField");
@@ -26,5 +27,15 @@ export class TuneHeader {
 
     getKey(): string {
         return this.keyField.value;
+    }
+
+    getComposers(): Array<string> {
+        var result: Array<string> = [];
+        this.informationFields.forEach(informationField => {
+            if (informationField instanceof composer.ComposerField) {
+                result.push(informationField.value);
+            }
+        });
+        return result;
     }
 }

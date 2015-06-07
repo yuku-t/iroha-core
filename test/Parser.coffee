@@ -24,6 +24,7 @@ describe "Parser", ->
         assert.equal(abcTune.getReferenceNumber(), 1)
         assert.equal(abcTune.getTitle(), "Speed the Plough")
         assert.equal(abcTune.getKey(), "G")
+        assert.deepEqual(abcTune.getComposers(), ["Trad."])
 
     context "when an invalid abc notation is given", ->
       it "throws Parser.SyntaxError", ->
