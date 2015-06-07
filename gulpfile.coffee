@@ -12,7 +12,7 @@ gulp.task "peg", ->
   gulp
     .src("src/abc.peg")
     .pipe(peg())
-    .pipe(rename("parser.js"))
+    .pipe(rename("Parser.js"))
     .pipe(gulp.dest("dist"))
 
 gulp.task "ts", ->
