@@ -9,4 +9,12 @@ export class AbcTune {
         this.tuneHeader = tuneHeader;
         this.tuneBody = tuneBody;
     }
+
+    getReferenceNumber(): Number {
+        return this.tuneHeader.getReferenceNumber();
+    }
+
+    getTitle(): String {
+        return this.tuneHeader.getTitle();
+    }
 }

@@ -12,4 +12,12 @@ export class TuneHeader {
         this.titleField = tf;
         this.informationFields = ifs;
     }
+
+    getReferenceNumber(): Number {
+        return this.referenceNumberField.value;
+    }
+
+    getTitle(): String {
+        return this.titleField.value;
+    }
 }
