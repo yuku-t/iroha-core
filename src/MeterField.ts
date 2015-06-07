@@ -1,11 +1,11 @@
 import field = require("./InformationField");
 
 export class MeterField implements field.InformationField {
-    value: String;
+    value: string;
 
     letter = "M";
 
-    constructor(value: String) {
+    constructor(value: string) {
         this.value = value;
     }
 }

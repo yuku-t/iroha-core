@@ -1,11 +1,11 @@
 import field = require("./InformationField");
 
 export class ReferenceNumberField implements field.InformationField {
-    value: Number;
+    value: number;
 
     letter = "X";
 
-    constructor(value: Number) {
+    constructor(value: number) {
         this.value = value;
     }
 }

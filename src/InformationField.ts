@@ -1,4 +1,4 @@
 export interface InformationField {
-    letter: String;
+    letter: string;
     value: any;
 }

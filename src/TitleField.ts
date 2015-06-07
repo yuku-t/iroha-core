@@ -1,11 +1,11 @@
 import field = require("./InformationField");
 
 export class TitleField implements field.InformationField {
-    value: String;
+    value: string;
 
     letter = "T";
 
-    constructor(value: String) {
+    constructor(value: string) {
         this.value = value;
     }
 }

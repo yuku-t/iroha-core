@@ -10,15 +10,15 @@ export class AbcTune {
         this.tuneBody = tuneBody;
     }
 
-    getReferenceNumber(): Number {
+    getReferenceNumber(): number {
         return this.tuneHeader.getReferenceNumber();
     }
 
-    getTitle(): String {
+    getTitle(): string {
         return this.tuneHeader.getTitle();
     }
 
-    getKey(): String {
+    getKey(): string {
         return this.tuneHeader.getKey();
     }
 }

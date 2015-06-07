@@ -16,15 +16,15 @@ export class TuneHeader {
         this.titleField = tf;
     }
 
-    getReferenceNumber(): Number {
+    getReferenceNumber(): number {
         return this.referenceNumberField.value;
     }
 
-    getTitle(): String {
+    getTitle(): string {
         return this.titleField.value;
     }
 
-    getKey(): String {
+    getKey(): string {
         return this.keyField.value;
     }
 }
