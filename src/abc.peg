@@ -7,6 +7,7 @@
     , EndOfRepeatedSection   = require("./EndOfRepeatedSection").EndOfRepeatedSection
     , KeyField               = require("./KeyField").KeyField
     , MeterField             = require("./MeterField").MeterField
+    , Note                   = require("./Note").Note
     , NotesGroup             = require("./NotesGroup").NotesGroup
     , ReferenceNumberField   = require("./ReferenceNumberField").ReferenceNumberField
     , StartOfRepeatedSection = require("./StartOfRepeatedSection").StartOfRepeatedSection
@@ -84,12 +85,12 @@ Element
   / Space { return null; }
 
 NotesGroup
-  = NoteElement+ { return new NotesGroup(); }
+  = elements:NoteElement+ { return new NotesGroup(elements); }
 
 NoteElement
-  = Note NoteLength?
+  = pitch:$Pitch noteLength:NoteLength? { return new Note(pitch, noteLength); }
 
-Note
+Pitch
   = [a-gA-G]
 
 NoteLength

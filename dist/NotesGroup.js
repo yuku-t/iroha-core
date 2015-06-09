@@ -1,5 +1,6 @@
 var NotesGroup = (function () {
-    function NotesGroup() {
+    function NotesGroup(notes) {
+        this.notes = notes;
     }
     return NotesGroup;
 })();
