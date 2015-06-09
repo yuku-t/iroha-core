@@ -1,9 +1,9 @@
-import tune = require("./AbcTune");
+import { AbcTune } from "./AbcTune";
 
 export class AbcFile {
-    abcTune: tune.AbcTune;
+    abcTune: AbcTune;
 
-    constructor (abcTune: tune.AbcTune) {
+    constructor (abcTune: AbcTune) {
         this.abcTune = abcTune;
     }
 }

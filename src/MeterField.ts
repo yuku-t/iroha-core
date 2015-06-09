@@ -1,6 +1,6 @@
-import field = require("./InformationField");
+import { InformationField } from "./InformationField";
 
-export class MeterField implements field.InformationField {
+export class MeterField implements InformationField {
     value: string;
 
     letter = "M";

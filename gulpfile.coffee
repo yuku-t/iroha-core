@@ -21,6 +21,7 @@ gulp.task "ts", ->
     .pipe(ts(
       module: "commonjs"
       outDir: "dist"
+      typescript: require "typescript"
     ))
   tsResult
     .dts

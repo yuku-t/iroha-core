@@ -1,12 +1,12 @@
-import body = require("./TuneBody");
-import header = require("./TuneHeader");
-import key = require("./Key");
+import { TuneBody } from "./TuneBody";
+import { TuneHeader } from "./TuneHeader";
+import { Key } from "./Key";
 
 export class AbcTune {
-    tuneHeader: header.TuneHeader;
-    tuneBody: body.TuneBody;
+    tuneHeader: TuneHeader;
+    tuneBody: TuneBody;
 
-    constructor (tuneHeader: header.TuneHeader, tuneBody: body.TuneBody) {
+    constructor (tuneHeader: TuneHeader, tuneBody: TuneBody) {
         this.tuneHeader = tuneHeader;
         this.tuneBody = tuneBody;
     }
@@ -19,7 +19,7 @@ export class AbcTune {
         return this.tuneHeader.getTitle();
     }
 
-    getKey(): key.Key {
+    getKey(): Key {
         return this.tuneHeader.getKey();
     }
 

@@ -1,6 +1,6 @@
-import field = require("./InformationField");
+import { InformationField } from "./InformationField";
 
-export class ComposerField implements field.InformationField {
+export class ComposerField implements InformationField {
     value: string;
 
     letter = "C";

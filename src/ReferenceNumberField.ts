@@ -1,6 +1,6 @@
-import field = require("./InformationField");
+import { InformationField } from "./InformationField";
 
-export class ReferenceNumberField implements field.InformationField {
+export class ReferenceNumberField implements InformationField {
     value: number;
 
     letter = "X";

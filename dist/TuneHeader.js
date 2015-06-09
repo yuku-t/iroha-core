@@ -1,5 +1,5 @@
-var composer = require("./ComposerField");
-var meter = require("./MeterField");
+var ComposerField_1 = require("./ComposerField");
+var MeterField_1 = require("./MeterField");
 var TuneHeader = (function () {
     function TuneHeader(xf, tf, kf, ifs) {
         var _this = this;
@@ -8,16 +8,16 @@ var TuneHeader = (function () {
         this.titleField = tf;
         this.composerFields = [];
         ifs.forEach(function (informationField) {
-            if (informationField instanceof composer.ComposerField) {
+            if (informationField instanceof ComposerField_1.ComposerField) {
                 _this.composerFields.push(informationField);
             }
-            else if (informationField instanceof meter.MeterField) {
+            else if (informationField instanceof MeterField_1.MeterField) {
                 _this.meterField = informationField;
             }
         });
         if (this.meterField == null) {
             // when there is no M: field defined, free meter is assumed.
-            this.meterField = new meter.MeterField("none");
+            this.meterField = new MeterField_1.MeterField("none");
         }
     }
     TuneHeader.prototype.getReferenceNumber = function () {

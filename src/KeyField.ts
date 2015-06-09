@@ -1,12 +1,12 @@
-import field = require("./InformationField");
-import key = require("./Key");
+import { InformationField } from "./InformationField";
+import { Key } from "./Key";
 
-export class KeyField implements field.InformationField {
-    value: key.Key;
+export class KeyField implements InformationField {
+    value: Key;
 
     letter = "K";
 
     constructor(array: string[]) {
-        this.value = new key.Key(array[0], array[1], array[2]);
+        this.value = new Key(array[0], array[1], array[2]);
     }
 }
