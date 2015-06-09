@@ -8,6 +8,7 @@
     , TitleField           = require("./TitleField").TitleField
     , TuneBody             = require("./TuneBody").TuneBody
     , TuneHeader           = require("./TuneHeader").TuneHeader
+    , TuneLine             = require("./TuneLine").TuneLine
 }
 
 Start
@@ -67,10 +68,10 @@ ModeMinor
   = [m]i ([i]i [n]i [o]i [r]i)?
 
 TuneBody
-  = TuneLine+ { return new TuneBody(); }
+  = tuneLines:TuneLine+ { return new TuneBody(tuneLines); }
 
 TuneLine
-  = Element+ Linefeed?
+  = Element+ Linefeed? { return new TuneLine(); }
 
 Element
   = NotesGroup

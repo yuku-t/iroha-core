@@ -1,5 +1,6 @@
 var TuneBody = (function () {
-    function TuneBody() {
+    function TuneBody(tuneLines) {
+        this.tuneLines = tuneLines;
     }
     return TuneBody;
 })();
