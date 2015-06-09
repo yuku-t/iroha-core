@@ -1,5 +1,6 @@
 var TuneLine = (function () {
-    function TuneLine() {
+    function TuneLine(elements) {
+        this.elements = elements;
     }
     return TuneLine;
 })();

@@ -1,14 +1,19 @@
 {
-  var AbcFile              = require("./AbcFile").AbcFile
-    , AbcTune              = require("./AbcTune").AbcTune
-    , ComposerField        = require("./ComposerField").ComposerField
-    , KeyField             = require("./KeyField").KeyField
-    , MeterField           = require("./MeterField").MeterField
-    , ReferenceNumberField = require("./ReferenceNumberField").ReferenceNumberField
-    , TitleField           = require("./TitleField").TitleField
-    , TuneBody             = require("./TuneBody").TuneBody
-    , TuneHeader           = require("./TuneHeader").TuneHeader
-    , TuneLine             = require("./TuneLine").TuneLine
+  var _                      = require("underscore")
+    , AbcFile                = require("./AbcFile").AbcFile
+    , AbcTune                = require("./AbcTune").AbcTune
+    , BarLine                = require("./BarLine").BarLine
+    , ComposerField          = require("./ComposerField").ComposerField
+    , EndOfRepeatedSection   = require("./EndOfRepeatedSection").EndOfRepeatedSection
+    , KeyField               = require("./KeyField").KeyField
+    , MeterField             = require("./MeterField").MeterField
+    , NotesGroup             = require("./NotesGroup").NotesGroup
+    , ReferenceNumberField   = require("./ReferenceNumberField").ReferenceNumberField
+    , StartOfRepeatedSection = require("./StartOfRepeatedSection").StartOfRepeatedSection
+    , TitleField             = require("./TitleField").TitleField
+    , TuneBody               = require("./TuneBody").TuneBody
+    , TuneHeader             = require("./TuneHeader").TuneHeader
+    , TuneLine               = require("./TuneLine").TuneLine
 }
 
 Start
@@ -71,15 +76,15 @@ TuneBody
   = tuneLines:TuneLine+ { return new TuneBody(tuneLines); }
 
 TuneLine
-  = Element+ Linefeed? { return new TuneLine(); }
+  = elements:Element+ Linefeed? { return new TuneLine(_.compact(elements)); }
 
 Element
   = NotesGroup
-  / BarLine
-  / Space
+  / BarSymbol
+  / Space { return null; }
 
 NotesGroup
-  = NoteElement+
+  = NoteElement+ { return new NotesGroup(); }
 
 NoteElement
   = Note NoteLength?
@@ -90,10 +95,10 @@ Note
 NoteLength
   = Number? ("/"+ Number?)?
 
-BarLine
-  = "|:"
-  / ":|"
-  / "|"
+BarSymbol
+  = "|:" { return new StartOfRepeatedSection(); }
+  / ":|" { return new EndOfRepeatedSection(); }
+  / "|"  { return new BarLine(); }
 
 Linefeed
   = "\r\n" / "\n"
