@@ -37,6 +37,9 @@ var TuneHeader = (function () {
             return composerField.value;
         });
     };
+    TuneHeader.prototype.getUnitNoteLength = function () {
+        return this.meterField.getUnitNoteLength();
+    };
     return TuneHeader;
 })();
 exports.TuneHeader = TuneHeader;

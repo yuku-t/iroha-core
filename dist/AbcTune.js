@@ -18,6 +18,9 @@ var AbcTune = (function () {
     AbcTune.prototype.getComposers = function () {
         return this.tuneHeader.getComposers();
     };
+    AbcTune.prototype.getUnitNoteLength = function () {
+        return this.tuneHeader.getUnitNoteLength();
+    };
     return AbcTune;
 })();
 exports.AbcTune = AbcTune;

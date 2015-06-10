@@ -54,4 +54,8 @@ export class TuneHeader {
             return composerField.value;
         });
     }
+
+    getUnitNoteLength(): string {
+        return this.meterField.getUnitNoteLength();
+    }
 }

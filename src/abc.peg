@@ -42,7 +42,7 @@ KeyField
   = "K:" key:Key Linefeed { return new KeyField(key); }
 
 MeterField
-  = "M:" text:TextString Linefeed { return new MeterField(text); }
+  = "M:" meter:$Meter Linefeed { return new MeterField(meter); }
 
 TitleField
   = "T:" text:TextString Linefeed { return new TitleField(text); }
@@ -72,6 +72,12 @@ ModeMajor
 
 ModeMinor
   = [m]i ([i]i [n]i [o]i [r]i)?
+
+Meter
+  = "C"
+  / "C|"
+  / Number "/" Number
+  / "(" Number ("+" Number)+ ")/" Number
 
 TuneBody
   = tuneLines:TuneLine+ { return new TuneBody(tuneLines); }

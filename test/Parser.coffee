@@ -31,4 +31,5 @@ describe "Parser", ->
         assert.instanceOf(abcTune.getKey(), Key)
         assert.equal(abcTune.getKey().toString(), "G")
         assert.equal(abcTune.getMeter(), "4/4")
+        assert.equal(abcTune.getUnitNoteLength(), "1/4")
         assert.deepEqual(abcTune.getComposers(), ["Trad."])

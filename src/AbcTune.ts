@@ -30,4 +30,8 @@ export class AbcTune {
     getComposers(): string[] {
         return this.tuneHeader.getComposers();
     }
+
+    getUnitNoteLength(): string {
+        return this.tuneHeader.getUnitNoteLength();
+    }
 }
