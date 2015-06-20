@@ -10,10 +10,10 @@ gulp.task "default", ["peg", "ts"]
 
 gulp.task "peg", ->
   gulp
-    .src("src/abc.peg")
+    .src("src/core/abc.pegjs")
     .pipe(peg())
     .pipe(rename("Parser.js"))
-    .pipe(gulp.dest("dist"))
+    .pipe(gulp.dest("dist/core"))
 
 gulp.task "ts", ->
   tsResult = gulp
@@ -32,7 +32,7 @@ gulp.task "ts", ->
 
 gulp.task "test", ->
   gulp
-    .src("test/*.coffee", read: false)
+    .src("test/**/*.coffee", read: false)
     .pipe(mocha())
 
 gulp.task "tslint", ->

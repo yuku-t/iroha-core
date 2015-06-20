@@ -1,5 +1,5 @@
 { assert } = require "chai"
-{ MeterField } = require "../dist/MeterField"
+{ MeterField } = require "../../dist/core/MeterField"
 
 describe "MeterField", ->
   meterField = null

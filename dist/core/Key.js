@@ -1,4 +1,4 @@
-/// <reference path="typings/underscore/underscore.d.ts" />
+/// <reference path="../typings/underscore/underscore.d.ts" />
 var _ = require("underscore");
 var Key = (function () {
     function Key(note, accidental, mode) {

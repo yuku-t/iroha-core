@@ -1,8 +1,8 @@
 fs           = require "fs"
 assert       = require("chai").assert
-Parser       = require "../dist/Parser"
-{ AbcFile }  = require "../dist/AbcFile"
-{ Key }      = require "../dist/Key"
+Parser       = require "../../dist/core/Parser"
+{ AbcFile }  = require "../../dist/core/AbcFile"
+{ Key }      = require "../../dist/core/Key"
 
 readFixture = (name) ->
   fs.readFileSync("test/fixtures/#{name}", "utf-8")
